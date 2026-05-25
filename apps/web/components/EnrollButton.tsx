@@ -16,9 +16,13 @@ export default function EnrollButton({courseId}:{ courseId:string}){
             }
         )
         const data = await response.json()
-           if(!response.ok){
+           if(response.status === 401){
             alert(data.error || "please login first")
             window.location.href = "/login"
+            return
+           }
+           else if(response.status === 400){
+            alert("already enrolled")
             return
            }
            alert("enrolled successfully")

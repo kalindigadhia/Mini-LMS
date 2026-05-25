@@ -50,22 +50,28 @@ export async function DELETE(
     await connect()
     const {id} =await params
 
-    // const lessons = await Lesson.find({id})
+     const lessons = await Lesson.find({courseId:id})
 
-    // const lessonIds = lessons.map((lesson:any)=>
-    //     lesson._id
-    // )
+     const lessonIds = lessons.map((lesson:any)=>
+        lesson._id
+     )
+     //delete progress of this course
+     await Progress.deleteMany({lessonId:{
+            $in:lessonIds
+        }
+     })
+// delete lessons of this course
+  await Lesson.deleteMany({
+    courseId: id
+  })
 
-    // await Progress.deleteMany({lessonId:{
-    //         $in:lessonIds
-    //     }
-    // })
+  // delete enrollments of this course
+  await Enrollment.deleteMany({
+    courseId: id
+  })
+  // then delete specific course
+  await (Course as any).findByIdAndDelete(id)
 
-    // await Lesson.deleteMany({id})
-
-    // await Enrollment.deleteMany({id})
-
-    await (Course as any).findByIdAndDelete(id)
     
     return NextResponse.json({
         message:"course deleted"

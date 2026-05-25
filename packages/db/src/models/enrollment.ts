@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const EnrollmentSchema = new mongoose.Schema({
     userId:{
         type:String,
-        required:true
+        required:true,
     },
     courseId:{
         type:String,
@@ -14,6 +14,15 @@ const EnrollmentSchema = new mongoose.Schema({
 },{
     timestamps:true
 })
+EnrollmentSchema.index(
+  {
+    userId: 1,
+    courseId: 1
+  },
+  {
+    unique: true
+  }
+)
 
  const Enrollment =mongoose.models.Enrollment || mongoose.model("Enrollment",EnrollmentSchema)
 
