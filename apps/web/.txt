@@ -1,0 +1,64 @@
+web port :3212 
+admin port : 3091
+
+// Why @repo/...?
+// Because monorepo internal packages mostly aavi naming use kare che.
+
+Better Auth:
+browser ma cookie store kare che. session maintain kare che
+
+Now dashboard page ma:
+current user session check karisu.
+
+mini-lms/
+│
+├── apps/
+│   ├── admin/                 # 🎯 Admin Dashboard (React UI)
+│   │   ├── app/
+│   │   ├── components/
+│   │   │   ├── course/
+│   │   │   │   ├── CourseCard.tsx
+│   │   │   │   ├── DeleteButton.tsx
+│   │   │   │   └── CourseForm.tsx
+│   │   │   ├── layout/
+│   │   │   └── ui/           # local UI only (admin-specific)
+│   │   ├── lib/
+│   │   └── hooks/
+│   │
+│   ├── web/                  # 🌐 Student frontend (optional)
+│   │   ├── app/
+│   │   ├── components/
+│   │   └── ui/
+│   │
+│
+├── packages/
+│   ├── db/                   # 🗄️ MongoDB + Models
+│   │   ├── src/
+│   │   │   ├── index.ts
+│   │   │   ├── models/
+│   │   │   │   ├── course.ts
+│   │   │   │   ├── user.ts
+│   │   │   │   └── order.ts
+│   │
+│   ├── ui/                  # 🎨 Shared UI Library (REUSABLE)
+│   │   ├── src/
+│   │   │   ├── Button.tsx
+│   │   │   ├── Input.tsx
+│   │   │   ├── Modal.tsx
+│   │   │   └── Card.tsx
+│   │
+│   ├── config/              # ⚙️ shared config (eslint, tsconfig)
+│   └── utils/               # 🧠 helper functions
+│
+├── turbo.json
+├── package.json
+└── tsconfig.json
+
+
+now in the admin side anyone can access the create-course or dashboard and add the lessons so to stop 
+that NOW WE WILL ADD - Login protection
+                     -  Admin-only routes
+                     -  Student-only routes
+                     -  Centralized auth logic
+
+middleware -request pela execute thay (request comes -> middleware check karse -> allow or redirect )

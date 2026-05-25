@@ -9,9 +9,12 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "prettier": "^3.7.4",
     "turbo": "^2.9.12",
-    "typescript": "5.9.2"
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": ">=18"
@@ -20,5 +23,17 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.0",
+    "@uploadthing/react": "^7.3.3",
+    "better-auth": "^1.6.11",
+    "bson": "^7.2.0",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.2",
+    "postcss": "^8.5.14",
+    "scheduler": "^0.27.0",
+    "tailwindcss": "^4.3.0",
+    "uploadthing": "^7.7.4"
+  }
 }
