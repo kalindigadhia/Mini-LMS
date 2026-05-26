@@ -1,22 +1,28 @@
 
+import Course from "@repo/db/src/models/course"
 import CourseCard from "../../../components/CourseCard"
+import SearchBar from "../../../components/SearchBar"
 
-async function getCourses(){
+async function getCourses(search:string =""){
 
     const response = await fetch(
-        "http://localhost:3091/api/course",{cache:"no-store"} )
+        `http://localhost:3091/api/course?search=${search}`,{cache:"no-store"} )
         
         return response.json()
 }
 
-export default async function CoursesPage(){
-
-    const courses = await getCourses()
+export default async function CoursesPage({searchParams  
+    }:{
+        searchParams:Promise<{search?:string}>
+    }){
+    const params = await searchParams
+    const search = params.search || ""
+    const courses = await getCourses(search)
 
     return (
-        <div className="p-10">
-
-            <h1 className="text-4xl font-bold my-5">
+        <div className="p-4">
+            <SearchBar/>
+            <h1 className="text-4xl font-bold my-4">
                 Courses
             </h1>
 

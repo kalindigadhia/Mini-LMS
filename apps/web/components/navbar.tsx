@@ -23,7 +23,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="flex items-center justify-between p-5 bg-blue-50">
+    <div className="flex items-center justify-between p-5 bg-cyan-900 text-white">
       <h1 className="text-2xl font-bold">Mini LMS</h1>
 
       <nav className="flex items-center gap-5">
@@ -33,7 +33,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           {session ? (
             <button
-             onClick={handleLogout} className="text-red-400 ">
+             onClick={handleLogout} className="text-white font-bold ">
              Logout
             </button>
           ) : (
