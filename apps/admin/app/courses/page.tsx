@@ -17,8 +17,8 @@ export default async function CoursesPage() {
              redirect("/")
         }
     return(
-        <div className="p-1">
-            <div className="flex items-center justify-between">
+        <div className="p-2 m-2">
+            <div className="flex items-center justify-between p-2">
                 <h1 className="text-4xl font-bold">
                     Courses
                 </h1>

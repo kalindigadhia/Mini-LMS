@@ -1,5 +1,4 @@
 import { auth } from "@repo/auth/server"
-
 import { headers } from "next/headers"
 
 async function getUser(){
@@ -10,17 +9,12 @@ async function getUser(){
     return session?.user
 }
 async function getStats( userId:string){
-
    const response = await fetch(`http://localhost:3212/api/my-courses?userId=${userId}`,
-      {
-         cache:"no-store"
-      }
-   )
+      { cache:"no-store" })
    const enrollments = await response.json()
 
    return {
-      enrolled:
-      enrollments.length
+      enrolled: enrollments.length
    }
 }
 
@@ -31,7 +25,7 @@ export default async function ProfilePage(){
     return (
 
         <div className="p-10">
-            <div
+            <div 
                 className ="flex items-center gap-5 mb-10">
                 <img src={ user?.image || "https://avatar.iran.liara.run/public" }
 

@@ -9,13 +9,29 @@ export const ourFileRouter = {
             maxFileSize:"4MB"
         }
 
-    }).onUploadComplete( async({file})=>{
+    })
+    .middleware(async()=>{
+        return{}
+    })
+    .onUploadComplete( async({file})=>{
 
             console.log( "file url",file.ufsUrl )
 
             return { url:file.ufsUrl }
-        }
-    )
+        }),
+    videoUploader:f({
+        video:{
+            maxFileSize:"512MB"
+         }
+    })
+    .middleware(async()=>{
+         return {}
+    })
+    .onUploadComplete(async({file})=>{
+    return {
+         url:file.ufsUrl
+    }
+}),
 
 } satisfies FileRouter
 

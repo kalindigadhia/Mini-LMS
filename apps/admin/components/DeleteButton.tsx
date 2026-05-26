@@ -16,6 +16,6 @@ export default function DeleteButton({id, onSuccess}:deleteProps){
     }
     return(
         <button onClick={handleDelete}
-                className="bg-red-500 px-4 py-2 rounded-lg">Delete</button>
+                className="bg-cyan-800 text-white px-4 py-2 rounded-lg">Delete</button>
     )
 }

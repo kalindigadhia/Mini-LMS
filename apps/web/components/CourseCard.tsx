@@ -31,7 +31,7 @@ export default function CourseCard(
 
             <Link
                 href={`/course/${course._id}`}
-                className="bg-blue-400 inline-block mt-5 px-4 py-2 rounded-lg"
+                className="bg-cyan-50 text-cyan-700 border-current font-bold inline-block mt-5 px-4 py-2 rounded-lg"
             >
                 View Course
             </Link>

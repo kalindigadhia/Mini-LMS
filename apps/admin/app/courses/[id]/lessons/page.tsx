@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import {useEffect, useState } from "react"
+import VideoUpload from "../../../../components/VideoUpload"
 
 export default function LessonsPage(
     {params}:{params:Promise<{id:string}>}
@@ -33,7 +34,7 @@ export default function LessonsPage(
                 },
                 body:JSON.stringify({
                     title,
-                    videoUrl,
+                    //videoUrl,
                     courseId:(await params).id
                 })
             })
@@ -41,7 +42,7 @@ export default function LessonsPage(
         console.log(data)
         alert("Lesson Added")
         setTitle("")
-        setVideoUrl("")
+       setVideoUrl("")
     }
    
     return (
@@ -63,8 +64,7 @@ export default function LessonsPage(
                     }
                     className="border p-3 rounded-lg"
                 />
-
-                <input
+                 <input
                     type="text"
                     placeholder="Video URL"
                     value={videoUrl}
@@ -72,11 +72,13 @@ export default function LessonsPage(
                         setVideoUrl(e.target.value)
                     }
                     className="border p-3 rounded-lg"
-                />
-
+                /> 
+                <div className="flex">
+                 <VideoUpload onChange={(url:string)=>setVideoUrl}/>
+                </div>
                 <button
                     type="submit"
-                    className="bg-blue-500 p-3 rounded-lg"
+                    className="bg-cyan-700 text-white text-xl font-bold p-3 rounded-lg"
                 >
                     Add Lesson
                 </button>
@@ -101,10 +103,17 @@ export default function LessonsPage(
                                     {lesson.title}
                                 </h3>
 
-                                <Link href={lesson.videoUrl} target="_blank" className="mt-2 text-sm break-all">
+                                 <Link href={lesson.videoUrl} target="_blank" className=" flex gap-2 mt-2 text-sm break-all">
                                     {lesson.videoUrl}
-                                </Link>
-
+                                </Link> 
+                                <button className="bg-cyan-700 text-white px-3 py-2 rounded-lg mt-3"
+                                 onClick={async()=>{ 
+                                    await fetch(`/api/lesson/${lesson._id}`,{
+                                         method:"DELETE"
+                                        })
+                                        location.reload()
+                                     }}>
+                                 Delete Lesson</button>
                             </div>
                         ))
                     }
@@ -114,4 +123,4 @@ export default function LessonsPage(
             </div>
         </div>
     )
-}
+} 

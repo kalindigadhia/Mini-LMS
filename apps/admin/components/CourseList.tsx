@@ -29,11 +29,11 @@ export default function CourseList({initialCourses}) {
 
   return (
     <>
-      <div className="my-5 mx-5">
+      <div className="my-5 mx-3">
 
         <Link
           href="/courses/create"
-          className="bg-blue-400 px-5 py-3 rounded-lg"
+          className="bg-cyan-800 text-white font-bold px-3 py-3 rounded-lg"
         >
           Create Course
         </Link>
@@ -47,9 +47,9 @@ export default function CourseList({initialCourses}) {
 
             <div
               key={course._id}
-              className="border my-4 p-5 rounded-xl"
+              className="border  my-4 p-5 rounded-xl"
             >
-
+ 
               <h2 className="text-2xl font-bold">
                 {course.title}
               </h2>
@@ -69,7 +69,7 @@ export default function CourseList({initialCourses}) {
                  onClick={() => onEdit(course)} means setEditingCourse(course)  */}
                 
                 <Link href={`/courses/${course._id}/lessons`} 
-                className="bg-green-500 px-4 py-2 rounded-lg">
+                className="bg-cyan-100 px-4 py-2 rounded-lg">
                   Lessons
                 </Link>
                 
