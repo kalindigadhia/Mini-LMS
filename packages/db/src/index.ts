@@ -31,3 +31,7 @@ export async function connect() {
 
   return cached.conn
 }
+
+export * from "./models/assessment"
+
+export * from "./models/attempt"

@@ -32,13 +32,13 @@ export default async function DashboardPage(){
          redirect("/")
     }
     return (
-        <div className="p-10">
+        <div className="p-10 ">
 
-            <h1 className=" text-5xl font-bold mb-10 ">
+            <h1 className=" text-5xl font-bold px-38 mb-10 ">
                 Admin Dashboard
             </h1>
 
-            <div className= "grid grid-cols-4 gap-5 ">
+            <div className= "grid grid-cols-4 px-38 gap-5 ">
 
                 <StatsCard
                     title="Courses"

@@ -23,19 +23,22 @@ export default function Navbar() {
   }
 
   return (
-    <div className="flex items-center justify-between p-5 bg-cyan-900 text-white">
-      <h1 className="text-2xl font-bold">Mini LMS</h1>
+    <div className="flex items-center justify-between py-7 px-14 bg-cyan-900 text-white">
+      <h1 className="text-3xl font-bold">Mini LMS</h1>
 
-      <nav className="flex items-center gap-5">
+      <nav className="flex items-center gap-6  text-lg">
         <Link href="/courses">Courses</Link>
-        <Link href="/my-courses">MyCourses</Link>
+        <Link href="/my-courses">My Courses</Link>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-6">
           {session ? (
+            <>
+             <Link href="/profile">Profile</Link>
             <button
              onClick={handleLogout} className="text-white font-bold ">
              Logout
             </button>
+            </>
           ) : (
             <>
               <Link href="/login">Login</Link>

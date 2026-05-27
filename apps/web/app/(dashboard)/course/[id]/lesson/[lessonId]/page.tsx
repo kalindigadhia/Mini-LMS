@@ -2,10 +2,11 @@ import { auth } from "@repo/auth/server"
 import { CompleteButton } from "../../../../../../components/CompleteButton" 
 import { headers } from "next/headers"
 import { redirect } from "next/navigation"
-
 import { connect } from "@repo/db/src"
+import { Assessment } from "@repo/db/src/models/assessment"
 import Enrollment from "@repo/db/src/models/enrollment"
 import mongoose from "mongoose"
+import Quiz from "../../../../../../components/Quiz"
 
 async function getLesson(lessonId:string) {
 
@@ -46,14 +47,13 @@ export default async function LessonPage(
         courseId: new mongoose.Types.ObjectId(courseId),
         userId: session.user.id
     })
-
     console.log("FOUND ENROLLMENT:", enrollment)
-
     if(!enrollment){
         redirect("/courses")
         
     }
 
+    const assessments = await Assessment.find({lessonId}).lean()
 
 function convertToEmbedUrl(url:string){
     const videoId = url.split("v=")[1]?.split("&")[0] ||
@@ -83,7 +83,11 @@ const embedUrl = convertToEmbedUrl(
                 className="rounded-xl"
             />
             <CompleteButton lessonId={lesson._id}/>
-
+            {assessments.map((assessment:any) => (
+                <Quiz key={assessment._id}
+                assessment={JSON.parse(JSON.stringify(assessment))}
+                />
+                ))}
         </div>
     )
 }

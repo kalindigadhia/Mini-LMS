@@ -26,7 +26,7 @@ export default async function CoursesPage({searchParams
                 Courses
             </h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3  gap-6">
 
                 {Array.isArray(courses) &&
                 courses.map((course: any) => (

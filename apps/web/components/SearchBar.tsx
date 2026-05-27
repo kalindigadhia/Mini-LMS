@@ -26,7 +26,7 @@ import { useEffect, useState } from "react"
         useEffect(()=>{
             const timeout =setTimeout(()=>{
                 fetchSuggestions(search)
-            },300)
+            },300) //in every letter the api is not called so the timeout is of 3s this process is called Debounce
             return()=> clearTimeout(timeout)
         },[search])
 

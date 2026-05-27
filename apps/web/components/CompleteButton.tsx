@@ -25,7 +25,7 @@ export function CompleteButton(
 
         <button
             onClick={handleComplete}
-            className="bg-blue-500 px-5 py-3 rounded-lg mt-5"
+            className="bg-cyan-800 text-white font-bold px-5 py-3 rounded-lg mt-7"
         >
             Mark Complete
         </button>

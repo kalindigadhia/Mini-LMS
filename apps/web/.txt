@@ -10,6 +10,28 @@ browser ma cookie store kare che. session maintain kare che
 Now dashboard page ma:
 current user session check karisu.
 
+Request = frontend → backend
+Response = backend → frontend
+
+Frontend Page
+   |
+   | fetch()
+   ↓
+API Route
+   |
+   | request.json()
+   ↓
+MongoDB
+   |
+   | saved data
+   ↓
+NextResponse.json()
+   |
+   ↓
+Frontend
+
+
+
 mini-lms/
 │
 ├── apps/
